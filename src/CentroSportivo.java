@@ -12,7 +12,7 @@ public class CentroSportivo {
         this.listaAttivita= new ArrayList<>();
     }
 
-    public boolean aggiungiSocio(String nome, String cognome, String codiceSocio) {
+    public boolean aggiungiSocio(String codiceSocio,String nome, String cognome) {
         if (listaSoci.containsKey(codiceSocio)) {
             return false;
         } else {
@@ -22,7 +22,7 @@ public class CentroSportivo {
         }
     }
 
-    public boolean aggiungiIstruttore(String nome, String cognome, String codiceIst) {
+    public boolean aggiungiIstruttore(String codiceIst,String nome, String cognome) {
         if (listaIstruttori.containsKey(codiceIst)) {
             return false;
         } else {
@@ -51,25 +51,26 @@ public class CentroSportivo {
     }
 
     public boolean assegnaIstruttore(String codiceS, String codiceI) {
-        if(!listaSoci.containsKey(codiceS) || !listaIstruttori.containsKey(codiceI) ){
+        if (!listaSoci.containsKey(codiceS) || !listaIstruttori.containsKey(codiceI)) {
             return false;
-        } else {
-            Socio s = listaSoci.get(codiceS);
-            Istruttore i = listaIstruttori.get(codiceI);
-            if (s.addIstruttore(i) == true && i.addSocio(s) == true) {
-                s.addIstruttore(i);
-                i.addSocio(s);
-                return true;
-            }else{ 
+        }
+        Socio s = listaSoci.get(codiceS);
+        Istruttore i = listaIstruttori.get(codiceI);
+         if (s.addIstruttore(i) && i.addSocio(s)) {
+            s.addIstruttore(i);
+            i.addSocio(s);
+            return true; 
+        }else{
             return false;
-            }
+        }   
     }
-}
+    
 
     public boolean rimuoviAssegnazione(String codiceS, String codiceI) {
         if (listaIstruttori.containsKey(codiceI) && listaSoci.containsKey(codiceS)) {
             if (listaIstruttori.get(codiceI).removeSocio(codiceS) == true) {
                 listaIstruttori.get(codiceI).removeSocio(codiceS);
+                
                 return true;
             }
         }
@@ -94,21 +95,14 @@ public class CentroSportivo {
         return listaIstruttori.get(cod).getSoci();
     }
 
-    public String getSoci(){
+    
+
+    public String getAttivita(){
         String retValue= "";
-        for (Socio s : listaSoci.values()) {
-            retValue+=s;
+        for (Attivita a : listaAttivita) {
+            retValue+=a;
         }
         return retValue;
     }
-    public String getIst(){
-        String retValue= "";
-        for (Istruttore i : listaIstruttori.values()) {
-            retValue+=i;
-        }
-        return retValue;
-    }
-
-
 
 }

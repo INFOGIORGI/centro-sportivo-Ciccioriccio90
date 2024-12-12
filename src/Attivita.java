@@ -15,5 +15,11 @@ public class Attivita {
         this.oraF = oraF;
         this.Descrizione = descrizione;
     }
+
+    @Override
+    public String toString() {
+        return soc+"//"+ist+"//"+data+"//"+oraI+"//"+oraF+"//"+Descrizione+"\n";
+    }
+    
     
 }

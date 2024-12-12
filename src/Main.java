@@ -8,7 +8,8 @@ public class Main {
         CentroSportivo c = new CentroSportivo();
         input(path, c);
 
-
+        c.rimuoviAssegnazione("S001", "I001");
+        System.out.print(c.getAttivita());
 
 
     }
@@ -19,20 +20,23 @@ public class Main {
                 String s = tScanner.nextLine();
                 String[] sp = s.split(";");
                 
-                // Verifica del tipo di record
+                
                 if (sp[0].equals("I")) {
                     // Istruttore: ID, Nome, Cognome
                     c.aggiungiIstruttore(sp[1], sp[2], sp[3]);
                     System.out.println("aggiunto istruttore");
-                } else if (sp[0].equals("S")) {
+                }  
+                if (sp[0].equals("S")) {
                     // Socio: ID, Nome, Cognome
                     c.aggiungiSocio(sp[1], sp[2], sp[3]);
                     System.out.println("aggiunto socio");
-                } else if (sp[0].equals("A")) {
+                }  
+                if (sp[0].equals("A")) {
                     // Assegnazione Istruttore: ID Socio, ID Istruttore
                     c.assegnaIstruttore(sp[1], sp[2]);
                     System.out.println("istruttore assegnato");
-                } else if (sp[0].equals("AT")) {
+                } 
+                 if (sp[0].equals("AT")) {
                     // Attività: ID Socio, ID Istruttore, Data, Ora Inizio, Ora Fine, Descrizione
                     c.AggiungiAttivita(sp[1], sp[2], sp[3], sp[4], sp[5], sp[6]);
                     System.out.println("aggiunta attivita");
