@@ -57,9 +57,21 @@ public class Istruttore {
     }
 
 
+    public boolean  hasSocio(String cod){
+        if(listaSocAssegnati.containsKey(cod))
+            return true;
+        else
+        return false;
+        
+    }
 
-
+    @Override
+    public String toString() {
+        return nome+" "+ cognome+" "+codIst+"\n";
+    }
     
+
+
 
         
 }

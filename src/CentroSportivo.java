@@ -3,10 +3,13 @@ import java.util.*;
 public class CentroSportivo {
     private HashMap<String, Socio> listaSoci;
     private HashMap<String, Istruttore> listaIstruttori;
-
+    private ArrayList<Attivita> listaAttivita;
+    
+    
     public CentroSportivo() {
-        listaSoci = new HashMap<>();
-        listaIstruttori = new HashMap<>();
+        this.listaSoci = new HashMap<>();
+        this.listaIstruttori = new HashMap<>();
+        this.listaAttivita= new ArrayList<>();
     }
 
     public boolean aggiungiSocio(String nome, String cognome, String codiceSocio) {
@@ -48,20 +51,20 @@ public class CentroSportivo {
     }
 
     public boolean assegnaIstruttore(String codiceS, String codiceI) {
-        if (listaIstruttori.containsKey(codiceI) && listaSoci.containsKey(codiceS)) {
+        if(!listaSoci.containsKey(codiceS) || !listaIstruttori.containsKey(codiceI) ){
+            return false;
+        } else {
             Socio s = listaSoci.get(codiceS);
             Istruttore i = listaIstruttori.get(codiceI);
             if (s.addIstruttore(i) == true && i.addSocio(s) == true) {
                 s.addIstruttore(i);
                 i.addSocio(s);
                 return true;
-            } else {
-                return false;
-            }
-        } else {
+            }else{ 
             return false;
-        }
+            }
     }
+}
 
     public boolean rimuoviAssegnazione(String codiceS, String codiceI) {
         if (listaIstruttori.containsKey(codiceI) && listaSoci.containsKey(codiceS)) {
@@ -76,14 +79,35 @@ public class CentroSportivo {
 
 
 
-    public boolean AggiungiAttivita(String codS, String codI, String data, String orarioI, String orarioF){
-        
+    public boolean AggiungiAttivita(String codS, String codI, String data, String orarioI, String orarioF, String descrizione){
+        if(!listaIstruttori.get(codI).hasSocio(codS)){
+            return false;
+        }else{
+            Attivita a = new Attivita(listaSoci.get(codS), listaIstruttori.get(codI), data, orarioI, orarioF, descrizione);
+            listaAttivita.add(a);
+            return true;
+        }
     }
 
 
+    public String getSoci(String cod){
+        return listaIstruttori.get(cod).getSoci();
+    }
 
-
-
+    public String getSoci(){
+        String retValue= "";
+        for (Socio s : listaSoci.values()) {
+            retValue+=s;
+        }
+        return retValue;
+    }
+    public String getIst(){
+        String retValue= "";
+        for (Istruttore i : listaIstruttori.values()) {
+            retValue+=i;
+        }
+        return retValue;
+    }
 
 
 

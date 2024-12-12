@@ -1,0 +1,11 @@
+S;S001;Mario;Rossi
+S;S002;Anna;Bianchi
+S;S003;Luca;Verdi
+I;I001;Giulia;Neri
+I;I002;Marco;Gialli
+A;S001;I001
+A;S002;I001
+A;S003;I002
+AT;S001;I001;20231215;10:00;11:00;Allenamento cardio
+AT;S002;I001;20231215;11:30;12:30;Lezione di yoga
+AT;S003;I002;20231216;09:00;10:00;Lezione di nuoto

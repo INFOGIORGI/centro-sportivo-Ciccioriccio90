@@ -42,7 +42,7 @@ public class Socio {
         return nome+" "+ cognome+" "+codSoc+"\n";
     }
 
-   
+    
 
     
 }
