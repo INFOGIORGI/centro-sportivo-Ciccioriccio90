@@ -1,11 +1,14 @@
 
 import java.util.HashMap;
+import java.util.LinkedList;
 
 public class Socio {
     private String nome; 
     private String cognome;
     private  String codSoc;
     private HashMap<String, Istruttore> listaistAssegnati;
+    private LinkedList<Attivita> attAssegnate;
+   
     
     
     public Socio(String nome, String cognome, String codSoc) {
@@ -13,6 +16,7 @@ public class Socio {
         this.cognome = cognome;
         this.codSoc = codSoc;
         this.listaistAssegnati=new HashMap<>();
+        this.attAssegnate=new LinkedList<>();
     }
 
    public int getlenListIst(){
@@ -23,6 +27,13 @@ public class Socio {
     return this;
    }
 
+   public boolean  removeIst(String codice){
+    if(listaistAssegnati.containsKey(codice)){
+        listaistAssegnati.remove(codice);
+        return true;
+    }
+    return false;
+   }
 
    public boolean addIstruttore(Istruttore ist){
     if(listaistAssegnati.containsValue(ist)){
@@ -42,7 +53,9 @@ public class Socio {
         return nome+" "+ cognome+" "+codSoc+"\n";
     }
 
-    
+    public void addAttivita(Attivita a){
+        attAssegnate.add(a);
+    }
 
     
 }

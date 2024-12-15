@@ -8,8 +8,8 @@ public class Main {
         CentroSportivo c = new CentroSportivo();
         input(path, c);
 
-        c.rimuoviAssegnazione("S001", "I001");
-        System.out.print(c.getAttivita());
+        
+      
 
 
     }
@@ -39,7 +39,7 @@ public class Main {
                  if (sp[0].equals("AT")) {
                     // Attività: ID Socio, ID Istruttore, Data, Ora Inizio, Ora Fine, Descrizione
                     c.AggiungiAttivita(sp[1], sp[2], sp[3], sp[4], sp[5], sp[6]);
-                    System.out.println("aggiunta attivita");
+                    
                 } 
             }
         } catch (Exception e) {

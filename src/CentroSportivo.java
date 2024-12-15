@@ -46,6 +46,10 @@ public class CentroSportivo {
             return false;
         } else {
             listaSoci.remove(codice);
+            for(Istruttore i : listaIstruttori.values()) {
+                i.removeSoc(codice);
+            }
+            
             return true;
         }
     }
@@ -85,7 +89,17 @@ public class CentroSportivo {
             return false;
         }else{
             Attivita a = new Attivita(listaSoci.get(codS), listaIstruttori.get(codI), data, orarioI, orarioF, descrizione);
+            for (Attivita attivita : listaAttivita) {
+                if((attivita.getData().equals(a.getData())) && (a.getOraI().compareTo(attivita.getOraI())>=0 && a.getOraF().compareTo(attivita.getOraF())<=0)||(a.getOraI().compareTo(attivita.getOraI())<0 && a.getOraF().compareTo(attivita.getOraF())<=0 && a.getOraF().compareTo(attivita.getOraI())>0)||(a.getOraI().compareTo(attivita.getOraI())>=0 && a.getOraF().compareTo(attivita.getOraF())>0 && a.getOraI().compareTo(attivita.getOraF())<0)){
+                    
+                    return false;
+                }
+            
+            }
             listaAttivita.add(a);
+            listaIstruttori.get(codI).addAttivita(a);
+            listaSoci.get(codS).addAttivita(a);
+
             return true;
         }
     }

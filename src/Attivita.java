@@ -20,6 +20,28 @@ public class Attivita {
     public String toString() {
         return soc+"//"+ist+"//"+data+"//"+oraI+"//"+oraF+"//"+Descrizione+"\n";
     }
+
+    public Socio getSoc() {
+        return soc;
+    }
+
+    public Istruttore getIst() {
+        return ist;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public String getOraI() {
+        return oraI;
+    }
+
+    public String getOraF() {
+        return oraF;
+    }
+
+    
     
     
 }

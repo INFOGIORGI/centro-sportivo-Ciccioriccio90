@@ -4,6 +4,8 @@ public class Istruttore {
     private String cognome;
     private String codIst;
     private HashMap<String, Socio> listaSocAssegnati;
+    private LinkedList<Attivita> attAssegnate;
+    
    
     
     
@@ -12,6 +14,7 @@ public class Istruttore {
         this.cognome = cognome;
         this.codIst = codIst;
         this.listaSocAssegnati= new HashMap<>();
+        this.attAssegnate=new LinkedList<>();
     }
     
     public int getlenListIst(){
@@ -22,6 +25,15 @@ public class Istruttore {
         return this;
     }
    
+
+    public boolean  removeSoc(String codice){
+        if(listaSocAssegnati.containsKey(codice)){
+            listaSocAssegnati.remove(codice);
+            return true;
+        }
+        return false;
+       }
+
    
        public String getCodIst() {
         return codIst;
@@ -70,7 +82,9 @@ public class Istruttore {
         return nome+" "+ cognome+" "+codIst+"\n";
     }
     
-
+    public void addAttivita(Attivita a){
+        attAssegnate.add(a);
+    }
 
 
         
